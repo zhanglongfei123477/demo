@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    img {
+        width: 800px;
+        height: 600px;
+    }
+</style>
+
+<body>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+    <p>224242</p>
+
+    <img class="one"
+        data_src="https://img0.baidu.com/it/u=3798217922,3880088897&fm=253&fmt=auto&app=120&f=JPEG?w=889&h=500">
+    <!--   <img src=""
+        data_src="https://img0.baidu.com/it/u=1149498394,1442276907&fm=253&fmt=auto&app=120&f=JPEG?w=1000&h=500">
+    <img src="" data_src="https://img2.baidu.com/it/u=1792249350,650626052&fm=253&fmt=auto&app=120&f=JPEG?w=1200&h=675">
+    <img src="" data_src="https://img2.baidu.com/it/u=3285347426,4018572834&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=432">
+    <img src="" data_src="https://img2.baidu.com/it/u=4010367258,1752169979&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500">
+ -->
+    <script>
+        let one = document.querySelector('.one');
+        console.log(document.documentElement.clientHeight);
+
+        console.log(one.offsetTop);
+        window.addEventListener('scroll', () => {
+            if (one.offsetTop - document.documentElement.scrollTop < document.documentElement.clientHeight) {
+                const data_src = one.getAttribute('data_src');
+                one.setAttribute('src', data_src);
+            }
+
+        })
+
+
+
+    </script>
+</body>
+
+</html>

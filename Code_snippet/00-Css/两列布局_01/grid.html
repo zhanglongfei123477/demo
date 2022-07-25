@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #parent {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        /*auto和1fr换一下顺序就是左列自适应,右列不定宽了*/
+    }
+
+    #left {
+        /*不设宽度*/
+        height: 500px;
+        background-color: #f00;
+    }
+
+    #right {
+        height: 500px;
+        background-color: #0f0;
+        /*均分#parent剩余的部分*/
+    }
+</style>
+
+<body>
+    <div id="parent">
+        <div id="left">左列不11110000000000000000000000001定宽</div>
+        <div id="right">右列自适应</div>
+    </div>
+</body>
+
+</html>

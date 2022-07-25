@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #parent {
+        display: flex;
+    }
+
+    #left {
+        /*不设宽度*/
+        height: 500px;
+        background-color: #f00;
+    }
+
+    #right {
+        height: 500px;
+        background-color: #0f0;
+        flex: 1;
+        /*均分#parent剩余的部分*/
+    }
+</style>
+
+<body>
+    <div id="parent">
+        <div id="left">左列不11111定宽</div>
+        <div id="right">右列自适应</div>
+    </div>
+</body>
+
+</html>
+
+

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <!-- 
+        从浏览器中创建 XMLHttpRequests
+        从 node.js 创建 http 请求
+        支持 Promise API
+        拦截请求和响应
+        转换请求数据和响应数据
+        取消请求
+        自动转换 JSON 数据
+        客户端支持防御 XSRF
+    -->
+<script>
+    //执行get请求
+    // 为给定 ID 的 user 创建请求
+    axios.get('http://127.0.0.1/user/001/zz')
+    .then(function (response) {
+        console.log(response);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+
+    //前端可以通过问号进行查询，通过params进行查询-----后端node通过req.query进行查询；
+    //前端通过http://127.0.0.1/user/12345/zz,后端通过/user/:id/:username
+    //匹配之后通过req.params进行获取id和username
+
+    //可选地，上面的请求可以这样做
+    axios.get('http://127.0.0.1/user?ids=12345&username=zz', {
+        /*  params: {
+        ids: 12345,
+        username:'zz'
+        } */
+    })
+    .then(function (response) {
+        console.log(response);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+
+
+     //执行post请求
+    axios.post('http://127.0.0.1/user', {
+        firstName: 'Fred',/*  */
+        lastName: 'Flintstone'
+    })
+    .then(function (response) {
+        console.log(response);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+
+    //执行多个并发请求
+    function getUserAccount() {
+        return axios.get('/user/12345');
+    }
+
+    function getUserPermissions() {
+        return axios.get('/user/12345/permissions');
+    }
+    axios.all([getUserAccount(), getUserPermissions()])
+    .then(axios.spread(function (acct, perms) {
+        // 两个请求现在都执行完成
+    }));
+
+    //可以通过向 axios 传递相关配置来创建请求
+    // 发送 POST 请求
+    axios({
+        method: 'post',
+        url: '/user/12345',
+        data: {
+            firstName: 'Fred',
+            lastName: 'Flintstone'
+        }
+    });
+
+    // 创建实例
+    // 可以使用自定义配置新建一个 axios 实例
+    // axios.create([config])
+
+    var instance = axios.create({
+        baseURL: 'https://some-domain.com/api/',
+        timeout: 1000,
+        headers: {'X-Custom-Header': 'foobar'}
+    });
+
+    //响应的信息
+        /* // `data` 由服务器提供的响应
+        data: {},
+        // `status` 来自服务器响应的 HTTP 状态码
+        status: 200,
+        // `statusText` 来自服务器响应的 HTTP 状态信息
+        statusText: 'OK',
+        // `headers` 服务器响应的头
+        headers: {},
+        // `config` 是为请求提供的配置信息
+        config: {}  */ 
+   
+    // 配置的默认值/defaults
+    // 你可以指定将被用在各个请求的配置默认值
+
+    // 全局的 axios 默认值
+    axios.defaults.baseURL = 'https://api.example.com';
+    axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+    axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+
+
+    // 自定义实例默认值
+    // 创建实例时设置配置的默认值
+    var instance = axios.create({
+        baseURL: 'https://api.example.com'
+    });
+
+    // 在实例已创建后修改默认值
+    instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+
+    // 配置会以一个优先顺序进行合并。这个顺序是：在 lib/defaults.js 找到的库的默认值，
+    // 然后是实例的 defaults 属性，
+    // 最后是请求的 config 参数。后者将优先于前者。这里是一个例子：
+
+    // 添加请求拦截器
+    axios.interceptors.request.use(function (config) {
+        // 在发送请求之前做些什么
+        return config;
+    }, function (error) {
+        // 对请求错误做些什么
+        return Promise.reject(error);
+    });
+
+    // 添加响应拦截器
+    axios.interceptors.response.use(function (response) {
+        // 对响应数据做点什么
+        return response;
+    }, function (error) {
+        // 对响应错误做点什么
+        return Promise.reject(error);
+    });
+
+    //如果你想在稍后移除拦截器，可以这样：
+
+    var myInterceptor = axios.interceptors.request.use(function () {/*...*/});
+    axios.interceptors.request.eject(myInterceptor);
+
+    //可以为自定义 axios 实例添加拦截器
+
+    var instance = axios.create();
+    instance.interceptors.request.use(function () {/*...*/});
+
+    //可以使用 validateStatus 配置选项定义一个自定义 HTTP 状态码的错误范围。
+
+    axios.get('/user/12345', {
+        validateStatus: function (status) {
+            return status < 500; // 状态码在大于或等于500时才会 reject
+        }
+    })
+</script>
+</body>
+</html>

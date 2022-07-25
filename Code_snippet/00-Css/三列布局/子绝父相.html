@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .parent {
+        position: relative;
+        width: 100%;
+    }
+
+    .left {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 300px;
+        width: 100px;
+        background-color: rgb(122, 26, 26);
+    }
+
+    .center {
+        box-sizing: border-box;
+        height: 400px;
+        padding-left: 100px;
+        padding-right: 100px;
+        width: 100%;
+        background-color: rgb(94, 187, 23);
+    }
+
+    .right {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 300px;
+        width: 100px;
+        background-color: rgb(37, 171, 113);
+    }
+</style>
+
+<body>
+    <div class="parent">
+        <div class="left">11</div>
+        <div class="center">22</div>
+        <div class="right">33</div>
+    </div>
+</body>
+
+</html>

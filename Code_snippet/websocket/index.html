@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    //首层浅拷贝
+    const shallowClone = (target) => {
+      if (typeof target === 'object' && target !== null) {
+        const cloneTarget = Array.isArray(target) ? [] : {};
+        for (let prop in target) {
+          if (target.hasOwnProperty(prop)) {
+            cloneTarget[prop] = target[prop];
+          }
+        }
+        return cloneTarget;
+      } else {
+        return target;
+      }
+    }
+
+    const originObj = [1, 2, 3, [1, 2, 3]]
+    const cloneObj = shallowClone(originObj)
+
+    cloneObj[3].push(8)
+    console.log(originObj);
+    console.log(cloneObj);
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>
